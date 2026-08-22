@@ -1,0 +1,16 @@
+{
+  "name": "@pi-web/browser-takeover",
+  "version": "1.0.0",
+  "private": true,
+  "description": "QiKa Code 自带浏览器接管：Chrome/Brave 扩展 + Native Messaging host + bridge + CLI。server 启动时自动拉起 bridge。",
+  "scripts": {},
+  "files": [
+    "cli",
+    "extension",
+    "native-host",
+    "pi-agent",
+    "INSTALL.md",
+    "README.md",
+    "demo.txt"
+  ]
+}

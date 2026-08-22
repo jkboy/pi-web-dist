@@ -1,0 +1,29 @@
+{
+  "manifest_version": 3,
+  "name": "QikaCode",
+  "version": "1.0.0",
+  "description": "教学演示：通过「Chrome 扩展 + Native Messaging + CDP」接管本机已运行浏览器并操作页面的原理。",
+  "permissions": [
+    "nativeMessaging",
+    "debugger",
+    "tabs",
+    "activeTab",
+    "scripting",
+    "alarms"
+  ],
+  "action": {
+    "default_title": "browser-ctl：点一下确保连接"
+  },
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA04U/aRNTnUbBy7QJCvtHk8GoM3ipts90BOtoOUYgR64yTVsPqUOLpF2ai69z8TFAb2Nh+jBkCgb7/SBWnpURdyUOcAn15tVKI/Jrxy9lYRn4f8aT22/6Jpk74otAyUMOqvZ3CeFlW5HFhePZWMiOexqczSTv67usOaFQhOFWhJevCpMtmSC4WXr9lSH702gwKqEovjdMbb4X5mEM99xv56RH4r/7kOHaaqMEtppbtH7PZkgs45P40/W6X5SsUEH8RCi19MIIgS8+c4rUby7l/bJlkjgt3gG913/nFKdtIet3Shhzl9YzMDTiggP7tq+EiuHpIJWjwKZ1bdmHemCoNQIDAQAB"
+}

@@ -1,0 +1,9 @@
+{
+  "name": "com.example.browser_takeover",
+  "description": "QikaCode - Native Messaging Host",
+  "path": "__GENERATED_BY_SETUP_HOST__",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://hofaknjoepgnnnajgjmfdflcaceklfbg/"
+  ]
+}

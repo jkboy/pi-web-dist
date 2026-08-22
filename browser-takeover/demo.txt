@@ -1,0 +1,49 @@
+# QikaCode 演示脚本 —— codex 式 agent 闭环
+# 用法: node cli/drive.js demo.txt
+#
+# 演示「AI 驱动浏览器」的完整闭环（像 codex 一样）：
+#   ① snapshot  看页面可交互元素清单（AI 据此选择操作目标）
+#   ② click/fill/pressKey 用受信任事件操作真实页面
+#   ③ waitFor  条件等待加载完成
+#   ④ screenshot / getText  验证结果
+
+# ---- 1. 列出浏览器当前已打开的标签 ----
+listTabs
+
+# ---- 2. 导航到一个含表单的演示页 ----
+navigate https://example.com
+sleep 1500
+
+# ---- 3. 页面快照：列出可交互元素 + e编号 + css 选择器 + 正文 ----
+snapshot
+
+# ---- 4. 条件等待元素出现（比裸 sleep 可靠）----
+waitFor h1 visible 5000
+
+# ---- 5. 受信任操作演示：点一个链接 / 填一个输入框 ----
+# 用一个 HTML 表单测试页（浏览器自带，无需联网）
+navigate data:text/html,<html><body><h1 id=t>Demo</h1><input id=n><button id=b>Go</button><div id=out></div><script>document.querySelector('#b').onclick=()=>document.querySelector('#out').textContent='clicked:'+document.querySelector('#n').value</script></body></html>
+sleep 800
+
+# 看快照，能找到 input#n / button#b
+snapshot
+
+# 填输入框（React 安全的受信任输入）
+fill #n  hello-agent
+
+# 点按钮
+click #b
+
+# 验证结果
+getText #out
+
+# ---- 6. 截图（视口）----
+screenshot
+
+# ---- 7. 全页截图 ----
+shotFull
+
+# ---- 8. 情形2：在现有窗口再开一个标签页 ----
+newTab https://example.org
+sleep 1200
+listTabs

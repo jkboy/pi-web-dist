@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- viewport-fit=cover 是 env(safe-area-inset-*) 取非零值的前提;
+         interactive-widget=resizes-content 让安卓 Chrome 键盘弹出时收缩布局视口(iOS 忽略,走 useVisualViewportVar 兜底) -->
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, interactive-widget=resizes-content"
+    />
+    <meta name="theme-color" content="#111111" />
+    <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml" />
+    <script>
+      // 首帧前应用主题防白闪；与 web/src/lib/theme.ts 的 KEY 保持一致
+      (function () {
+        var t = localStorage.getItem('pi-web-theme');
+        document.documentElement.dataset.theme = t === 'light' ? 'light' : 'dark';
+        if (t === 'light') {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff');
+        }
+      })();
+    </script>
+    <title>QiKa Code</title>
+    <script type="module" crossorigin src="/assets/index-D9-rFxGw.js"></script>
+    <link rel="modulepreload" crossorigin href="/assets/markdown-1LNyI91_.js">
+    <link rel="modulepreload" crossorigin href="/assets/react-BIQbUFaD.js">
+    <link rel="stylesheet" crossorigin href="/assets/index-CoJIibBr.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
